@@ -16,15 +16,6 @@ More details [here](https://github.com/Inception-framework/inception).
 
 
 ## Publications
-
-```latex
-@inproceedings{EURECOM+5550,
-  year =        {2018},
-  title =       {{I}nception: {S}ystem-wide security testing of real-world embedded systems software},
-  author =      {{C}orteggiani, {N}assim and  {C}amurati, {G}iovanni and  {F}rancillon, {A}ur{\'e}lien},
-  booktitle =   {{USENIX} 2018, 27th {U}senix {S}ecurity {S}ymposium, {A}ugust 15-17, 2018, {B}altimore, {MD}, {USA}},
-  address =     {{B}altimore, {UNITED} {STATES}},
-  month =       {08},
-  url =  	      {http://www.eurecom.fr/publication/5550}
-}
-```
+Inception: System-wide security testing of real-world embedded systems software
+Author: Corteggiani, Nassim and  Camurati, Giovanni and Francillon, Aurélien
+USENIX Security 2018
