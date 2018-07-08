@@ -6,7 +6,11 @@ It supports symbolic execution  of firmware source code where high level languag
 ## Building
 
 There are two ways to install Inception:
-The easiest way is to use our Docker image. More details [here](https://github.com/Inception-framework/docker).
+
+* The easiest way is to use our Docker image. 
+More details [here](https://github.com/Inception-framework/docker).
+* It can be build from source with LLVM 3.6.2
+More details [here](https://github.com/Inception-framework/inception).
 
 ## Getting started 
 
