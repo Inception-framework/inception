@@ -17,7 +17,7 @@ More details [here](https://github.com/Inception-framework/inception).
 
 ## Publications
 
-```
+```latex
 @inproceedings{EURECOM+5550,
   year =        {2018},
   title =       {{I}nception: {S}ystem-wide security testing of real-world embedded systems software},
