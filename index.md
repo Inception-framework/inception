@@ -3,6 +3,9 @@
 Inception is a framework to perform security testing of complete real world firmware programs.
 It supports symbolic execution  of firmware source code where high level languages (C/C++) are mixed with hand-written assembly or binary dependencies. It is build on top of Klee.
 
+## Authors
+Author: Corteggiani, Nassim and  Camurati, Giovanni and Francillon, Aurélien
+
 ## Building
 
 There are two ways to install Inception:
@@ -13,9 +16,8 @@ More details [here](https://github.com/Inception-framework/docker).
 More details [here](https://github.com/Inception-framework/inception).
 
 ## Getting started 
-
+[Official samples](https://github.com/Inception-framework/samples).
 
 ## Publications
 Inception: System-wide security testing of real-world embedded systems software
-Author: Corteggiani, Nassim and  Camurati, Giovanni and Francillon, Aurélien
 USENIX Security 2018
