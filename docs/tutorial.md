@@ -206,9 +206,17 @@ SysTick_Handler:
 B .
 ```
 
-You can then use the arm toolchain to generate an elf.
+We can then use the arm toolchain to generate an elf.
 
 ```arm-none-eabi-gcc -march=armv7-m -mthumb -mcpu=cortex-m3 -Wa,-mimplicit-it=thumb -g -c main.c -o main.o```
 ```arm-none-eabi-ld -T ./link.ld main.o -o main.elf```
+
+### Compilation of source code to LLVM with clang
+
+We now need to compile the source code to LLVM, using the following command:
+
+```clang --target=thumbv7m-elf -mcpu=cortex-m3 -mthumb -emit-llvm -IAnalyzer/include -c -g main.c -o main.bc```
+
+
 
 ### Configuration and execution
