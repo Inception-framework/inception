@@ -17,11 +17,32 @@ Nassim Corteggiani, Giovanni Camurati, Aurélien Francillon.
 
 ## Getting started
 
-### Installing
+### Installing the sofware
 
 The easiest way is to use our Docker image. 
-More details on how to compile it [here](https://github.com/Inception-framework/docker).
+You can find more details on how to compile it [here](https://github.com/Inception-framework/docker).
 Alternatively, you can bulld the necessary components on your machine (you can use our docker file as a reference). 
+
+### Setting up the debugger
+
+If you want you can skip this step and run all the examples that do not require redirection to the real device.
+
+We are currently working on the release of the debugger. We will provide both source code and a synthesized design.
+More details will be [here](https://github.com/Inception-framework/debugger).
+
+### Quick tutorial
+
+To help you getting started with Inception, we provide a very short and simple guide [here](tutorial). 
+This quick tutorial will teach you how to use Inception-translator on a very simple program, how to configure Inception-analyzer, and how to run the example. After this, you can move to our more complex examples.
+
+### Examples
+
+We provide a large set of examples [here](https://github.com/Inception-framework/usenix-samples).
+This repository contains all the samples mentioned in our USENIX'18 paper. For each directory a README.md file is present to explain the purpose of the test and how to replay it. Many of them can be run also without any additional hardware.
+
+### Verification
+
+You can find our tool for verification [here](https://github.com/Inception-framework/verification). The README.md will explain you how our verification system works (comparison between execution in Inception-analyzer and execution on a real processor) and how to run all the pre-recorded tests without any additional hardware. If you have Inception-debugger and a Cortex-M3 with a AHB-AP JTAG port, you can create new tests.
 
 ## Publications
 
