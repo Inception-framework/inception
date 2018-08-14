@@ -25,9 +25,10 @@ Alternatively, you can bulld the necessary components on your machine (you can u
 
 ## Publications
 
-> Inception: System-wide security testing of real-world embedded systems software   
+> **Inception: System-wide security testing of real-world embedded systems software**     
 > Nassim Corteggiani, Giovanni Camurati, Aurélien Francillon   
-> USENIX Security 2018
+> 27th USENIX Security Symposium (USENIX Security 18), Baltimore, MD (acceptance rate: 19.1%)  
+> [PDF](http://s3.eurecom.fr/docs/usenixsec18_corteggiani.pdf)
 
 ## Other resources/coverage 
 
