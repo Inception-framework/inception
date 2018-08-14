@@ -25,13 +25,11 @@ Alternatively, you can bulld the necessary components on your machine (you can u
 
 ## Publications
 
-Inception: System-wide security testing of real-world embedded systems software
-
-Nassim Corteggiani, Giovanni Camurati, Aurélien Francillon
-
-USENIX Security 2018
+> Inception: System-wide security testing of real-world embedded systems software   
+> Nassim Corteggiani, Giovanni Camurati, Aurélien Francillon   
+> USENIX Security 2018
 
 ## Other resources/coverage 
 
-[Open-Source Framework Detects Memory Corruptions in Embedded Software](https://www.maximintegrated.com/en/design/blog/open-source-framework.html)
+> [Open-Source Framework Detects Memory Corruptions in Embedded Software](https://www.maximintegrated.com/en/design/blog/open-source-framework.html)
 
