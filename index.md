@@ -32,7 +32,7 @@ More details will be [here](https://github.com/Inception-framework/debugger).
 
 ### Quick tutorial
 
-To help you getting started with Inception, we provide a very short and simple guide [here](tutorial). 
+To help you getting started with Inception, we provide a very short and simple guide [here](tutorial.md). 
 This quick tutorial will teach you how to use Inception-translator on a very simple program, how to configure Inception-analyzer, and how to run the example. After this, you can move to our more complex examples.
 
 ### Examples
