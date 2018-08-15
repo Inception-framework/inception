@@ -1,4 +1,4 @@
-# Inception : System-wide Security Testing of Real-World Embedded Systems Software
+# Inception: System-wide Security Testing of Real-World Embedded Systems Software
 
 Inception is a framework to perform security testing of real world firmware programs.
 
