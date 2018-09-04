@@ -58,4 +58,4 @@ You can find our tool for verification [here](https://github.com/Inception-frame
 
 ![alt text][logo]
 
-[logo]: https://github.com/Inception-framework/inception/blob/master/Logo_inception.png "Inception official logo"
+[logo]: https://raw.githubusercontent.com/Inception-framework/inception/master/Logo_inception.png "Inception official logo"
