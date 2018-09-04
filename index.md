@@ -54,3 +54,8 @@ You can find our tool for verification [here](https://github.com/Inception-frame
 
 > [Open-Source Framework Detects Memory Corruptions in Embedded Software](https://www.maximintegrated.com/en/design/blog/open-source-framework.html)
 
+## Official logo
+
+![alt text][logo]
+
+[logo]: https://github.com/Inception-framework/inception/blob/master/Logo_inception.png "Inception official logo"
