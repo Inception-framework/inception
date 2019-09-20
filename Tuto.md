@@ -1,7 +1,7 @@
 # Tutorial
 
-In this tutorial, we present on use case to demonstrate the usefulness of using Inception on the analysis of a real-world firmware soure-code.
-The firmware under test is a Web server for the board LPC1850-DB1 from Diolan. This board hosts an NXP LPC1850 based on a ARM Cortex-M3 micro-processor. 
+In this tutorial, we present one use case to demonstrate the usefulness of using Inception for the analysis of a real-world firmware soure-code.
+The firmware under test is a Web server for the board LPC1850-DB1 from Diolan. This board hosts an NXP LPC1850 chip based on a ARM Cortex-M3.
 The firmware contains 3 main elements that are:
 
 * A light TCP/IP stack.
@@ -11,7 +11,7 @@ The firmware contains 3 main elements that are:
 ## Requirements 
 
 You can download the code directly from Diolan website, however we recommand you to use our version for two simple reasons.
-First, we add compilation scripts that avoid installing more than necessary. Second, we modify the source code to add a vulnerability.
+First, we added compilation scripts that avoid installing more than necessary. Second, we modify the source code to add a vulnerability.
 
 ```
 git clone https://github.com/Inception-framework/lpc18xx-demos.git
@@ -24,7 +24,7 @@ We recommand you to use our Docker container that avoids dependencies issues.
 
 To perform its analysis, Inception requires two inputs. A target ELF binary with symbols and a bitcode in LLVM IR. 
 The bitcode is the intermediate representation used by the LLVM compiler framework.
-We use the LLVM frontend for C/C++ code that is Clang. Our script we build for you all the required files.
+We use the LLVM frontend for C/C++ code that is Clang. Our script build for you all the required files.
 
 ```
 cd lpc18xx-demos
