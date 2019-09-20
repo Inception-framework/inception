@@ -1,6 +1,13 @@
 # Inception: System-wide Security Testing of Real-World Embedded Systems Software
 
 Inception is a framework to perform security testing of real world firmware programs.
+Its main features are:
+
+* Full support of firmware source-code. Inception handle high level programming such as C/C++ but also binary dependences and assembly code. This may be helpful when testing a firmware source code having binary code as dependency. This usually happens with Board Support Packages.
+* Fine-grained memory configuration. Inception rehosts the firmware execution in a symbolic virtual machine. To faithfully reproduce the firmware environment, all the memory is configurable. It enables users to choose for each memory mapped registers if  accesses should be redirected to the real device, symbolic, randomized or fixed to a user-defined value. Using this feature, ones can easily defines a custom test strategy!
+* A low-latency debugger that forwards, when requested, i/o to the real device. Of course, this feature requires a JTAG interface on the device. The debugger has been designed with performance in mind to get a latency as low as possible so that redirecting interrupt and i/o have not a significant impact on the analysis.
+
+In the following, we get a short description of the three main components of Inception:
 
 ***Inception-translator*** generates a unified intermediate representation from C/C++ source code that also contains inline
 assembly (or statically linked binary code). This representation is based on LLVM bytecode preserves as much as possible of the high-level semantics of the source code. This is useful to detect memory vulnerabilities. For example, knowing the size of a buffer makes it possible to detect an overflow. We call the intermediate representation resulting from this process mixed-IR.
