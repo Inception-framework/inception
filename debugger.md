@@ -37,4 +37,13 @@ The current version has been tested on Cortex-M3 micro-controller. However, it s
 | STM32-L152RE  | Yes       |
 | Zedboard ARM9 | Not yet   |
 
+## Testing Debugger From the Inception Analyzer
+
+Users can find interesting samples and test on the github repository. 
+Among these samples, some programs are provided to verify the debugger.
+[For instance, the usenix-samples/forwarding_tests/speed_io_8b_and_16b/](https://github.com/Inception-framework/usenix-samples) test that the forwarding mechanism is working well by writing a random byte in the device memory and then reading the same address to compare. This is repeated 65536 times and takes less than 8s in average to return.
+
+![Using the python binding](./img/benchmark_io.svg)
+
+## References
 [1]: http://www.s3.eurecom.fr/tools/avatar/
