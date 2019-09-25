@@ -46,4 +46,4 @@ Among these samples, some programs are provided to verify the debugger.
 ![Using the python binding](./img/benchmark_io.svg)
 
 ## References
-[1]: http://www.s3.eurecom.fr/tools/avatar/
+\[1\]: http://www.s3.eurecom.fr/tools/avatar/
