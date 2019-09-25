@@ -37,6 +37,8 @@ If you want you can skip this step and run all the examples that do not require 
 We are currently working on the release of the debugger. We will provide both source code and a synthesized design.
 More details will be [here](https://github.com/Inception-framework/debugger).
 
+If you would like to know more about the debugger of Inception, please [refer to this page.](debugger.md)
+
 ### Quick tutorial
 
 To help you getting started with Inception, we provide a very short and simple guide [here](https://github.com/Inception-framework/tutorial).This quick tutorial will teach you how to use Inception-translator on a very simple program, how to configure Inception-analyzer, and how to run the example. After this, you can move to our more complex examples.
