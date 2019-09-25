@@ -27,5 +27,14 @@ This script supports many features such as core halt, core resume, read/write sy
 
 ![Using the python binding](./img/demo_debugger_lib.svg)
 
+## Supported Board
+
+The current version has been tested on Cortex-M3 micro-controller. However, it should work with ARM processors implemented the Coresight design, that is all recent ARM CPU (ARMv7/M/ARMv8/M). Unfortunatly, supporting new Coresight compliant chip requires sometimes design modification as the boundary scan may contains different device with different IR register length. The second version of the debugger fixes this issue.
+
+| Device        | Supported |
+|---------------|-----------|
+| LPC1850-DB1   | Yes       |
+| STM32-L152RE  | Yes       |
+| Zedboard ARM9 | Not yet   |
 
 [1]: http://www.s3.eurecom.fr/tools/avatar/
