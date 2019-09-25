@@ -43,6 +43,24 @@ Users can find interesting samples and test on the github repository.
 Among these samples, some programs are provided to verify the debugger.
 [For instance, the usenix-samples/forwarding_tests/speed_io_8b_and_16b/](https://github.com/Inception-framework/usenix-samples) test that the forwarding mechanism is working well by writing a random byte in the device memory and then reading the same address to compare. This is repeated 65536 times and takes less than 8s in average to return.
 
+```
+cd
+git clone https://github.com/Inception-framework/usenix-samples.git
+cd usenix-samples/forwarding_tests/speed_io_8b_and_16b/
+make
+
+inception --allocate-determ --allocate-determ-start-address 0x30000000 --allocate-determ-size 10000 --elf ./bin.elf --bitcode ./bin.bc --mem_conf_file ./mem.json --has_debugger
+```
+
+To configure the forwarding mechanism, Inception requires a memory model that is described in files mem.conf
+```
+{
+    "memory_model" : [
+      { "name": "MMIO", "base" : "2000C000", "size": "FFFF", "read_only": false, "strategy": "forwarded"}
+    ]
+}
+```
+
 ![Using the python binding](./img/benchmark_io.svg)
 
 ## References
