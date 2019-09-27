@@ -92,10 +92,11 @@ inception --elf ./lpc18xx-demos/bin.elf --bitcode ./lpc18xx-demos/bin.bc \
 --mem_conf_file ./mem.json --interrupt_conf_file ./irq.json
 ```
 
+During the analysis, inception triggers SysTick interrupt every 1000 instructions and print a debug message on the screen.
+
 **Note** options starting with 'allocate-determ' are used to force 32bits address space when interpreting High-IR LLVM IR.
 This avoids pointer missmatch.
 
-## Inspecting the analysis results
 
 
 
