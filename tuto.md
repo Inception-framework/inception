@@ -11,20 +11,20 @@ The firmware contains 3 main elements that are:
 ## Requirements 
 
 You can download the code directly from Diolan website, however we recommand you to use our version for two simple reasons.
-First, we added compilation scripts that avoid installing more than necessary. Second, we modify the source code to add a vulnerability.
+First, we added compilation scripts that avoid installing more than necessary. Second, we modified the source code to add a vulnerability.
 
 ```
 git clone https://github.com/Inception-framework/lpc18xx-demos.git
 ```
 
 Before going futher in this tutorial, you need to install Inception on your machine natively or through a Docker container.
-We recommand you to use our Docker container that avoids dependencies issues.
+We recommand you to use our Docker container that avoids dependencies issues. This tutorial requires Inception v2 that is not publicly available yet.
 
 ## First - cross-compilation
 
 To perform its analysis, Inception requires two inputs. A target ELF binary with symbols and a bitcode in LLVM IR. 
-The bitcode is the intermediate representation used by the LLVM compiler framework.
-We use the LLVM frontend for C/C++ code that is Clang. Our Makefile script will build all the required files.
+The bitcode is a semantic model in LLVM IR.
+We use the LLVM frontend for C/C++ code that is Clang. Our Makefile script will automatically build all the required files.
 
 ```
 cd lpc18xx-demos
@@ -34,9 +34,9 @@ PROJECT=Web make
 
 To get more details about this, we describe below the 3 main steps:
 
-* Classic compilation using GCC or Clang. During our experiment, we use GCC because it is prevalence. However, we recommend using Clang that performs interesting sanity checks, and avoids errors due to symbols naming convention. This step emits an ELF file for ARM32 target with debug information. These debug information are not always required, Inception can analyze binary code but requires debug symbols to support execution of high level programming language (C/C++) and binary code at the same time.
+* Classic compilation using GCC or Clang. During our experiment, we use GCC because of its prevalence. However, we recommend using Clang that performs interesting sanity checks, and avoids errors due to symbols naming convention. We observed this last case when testing C++ source code. This step emits an ELF file for ARM32 target with debug information. These debug information are not always required, Inception can analyze binary code but requires debug symbols to support execution of high level programming language (C/C++) and binary code at the same time.
 * High-IR compilation. Inception uses the LLVM intermediate representation (LLVM IR) to create a semantic model that is a representation of the firmware semantic. We used Clang to emit this from source-code (C/C++).
-* Low-IR compilation. During last step we emit LLVM IR for C/C++ only. However, our firmware may have binary dependencies or assembly functions. For this reason, we designed the Inception lift-and-merge approach that is implemented by the Inception translator. During this step all low level code (assembly, binary) are translated into LLVM IR. Then glue code is inserted to enables High-IR and Low-IR to interact together. The resulting code is then compiled to form a bitcode file named bin.bc.
+* Low-IR compilation. During last step we emit LLVM IR for C/C++ only. However, our firmware may have binary dependencies or assembly functions. For this reason, we designed the Inception lift-and-merge approach that is implemented by the Inception translator. During this step all low level code (assembly, binary) are translated into LLVM IR. Then a glue code is inserted to enables High-IR and Low-IR to interact together. The resulting code is then compiled to form a bitcode file named bin.bc.
 
 ## Second - setting the memory model
 
@@ -66,10 +66,9 @@ In the purpose of testing the Web server, we will focus on the symbolic strategi
 
 ## Third - setting the interrupt model
 
-On second and important challenge when analyzing firmware programs it the interrupt model.
-Hardware peripherals uses this interrupt mechanism to notify the firmware that a task complete.
-To process interrupt, the CPU stopd current execution, stack context (registers) on the stack, resolve the interrupt handler address using the interrupt vector and then update the instruction pointer to start executing the interrupt handler.
-To support interrupt, the analyzer need to emulate all this part. Two behavior are supported:
+One second and important challenge when analyzing firmware programs is the interrupt mechanim.
+Hardware peripherals uses interrupt signals to notify the firmware that a task completed.
+To process interrupt, the CPU (Cortex M) stops current code execution, stacks context (registers) on the stack, resolve the interrupt handler address using the interrupt vector and then update the instruction pointer to start executing the interrupt handler. To support interrupt, the analyzer needs to emulate all these parts. Two behaviors are supported:
 
 * real communication with the interrupt controler. This mode is automatically used when the Inception debugger is attached.
 However, it needs to run a software stub on the device to catch and forward interrupt. Since the set-up is not easy, we will focus on the second method.
@@ -92,7 +91,7 @@ inception --elf ./lpc18xx-demos/bin.elf --bitcode ./lpc18xx-demos/bin.bc \
 --allocate-determ --allocate-determ-start-address 0x90000000 --allocate-determ-size 10000 \
 --mem_conf_file ./mem.json --interrupt_conf_file ./irq.json
 ```
-## Inspection the analysis results
 
+## Inspecting the analysis results
 
 
