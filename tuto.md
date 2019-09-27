@@ -24,13 +24,19 @@ We recommand you to use our Docker container that avoids dependencies issues.
 
 To perform its analysis, Inception requires two inputs. A target ELF binary with symbols and a bitcode in LLVM IR. 
 The bitcode is the intermediate representation used by the LLVM compiler framework.
-We use the LLVM frontend for C/C++ code that is Clang. Our script build for you all the required files.
+We use the LLVM frontend for C/C++ code that is Clang. Our Makefile script will build all the required files.
 
 ```
 cd lpc18xx-demos
 
-./build.sh Web
+PROJECT=Web make
 ```
+
+To get more details about this, we describe below the 3 main steps:
+
+* Classic compilation using GCC or Clang. During our experiment, we use GCC because it is prevalence. However, we recommend using Clang that performs interesting sanity checks, and avoids errors due to symbols naming convention. This step emits an ELF file for ARM32 target with debug information. These debug information are not always required, Inception can analyze binary code but requires debug symbols to support execution of high level programming language (C/C++) and binary code at the same time.
+* High-IR compilation. Inception uses the LLVM intermediate representation (LLVM IR) to create a semantic model that is a representation of the firmware semantic. We used Clang to emit this from source-code (C/C++).
+* Low-IR compilation. During last step we emit LLVM IR for C/C++ only. However, our firmware may have binary dependencies or assembly functions. For this reason, we designed the Inception lift-and-merge approach that is implemented by the Inception translator. During this step all low level code (assembly, binary) are translated into LLVM IR. Then glue code is inserted to enables High-IR and Low-IR to interact together. The resulting code is then compiled to form a bitcode file named bin.bc.
 
 ## Second - setting the memory model
 
@@ -43,20 +49,49 @@ This is generaly a good way to prune the explored states to realistic cases.
 In some other, you can decide to randomized or to consider all the possible values during the analysis (i.e. symbolic value).
 This is generaly the case when inputs come from an untrusted element (e.g. ethernet buffer).
 To summarize, this feature is by far the most important as it enables you to define the test strategy to follow during the analysis.
-This strategy is mainly based on modeling the memory model of the firmware.
+This strategy is mainly based on modeling the memory model of the firmware that are the programs inputs.
 
-In the purpose of testing the Web server, we will focus on the symbolic strategies but you can find below all the configurations.
+In the purpose of testing the Web server, we will focus on the symbolic strategies but you can find below all the supported configurations.
+
+* default    : when nothing is specified, the memory area is local to the analyzer and initialized to zero.
+* randomized : the memory area is initialized to a random value.
+* symbolic   : use constraint instead of concrete value.
+* forwarded  : redirect i/o to the real device (this requires the Inception debugger to be attached).
 
 ```
-"MemoryModel": [
-  {"name": 'Ethernet_buffer', "base": '0x40000000', "size": '256', "strategy": 'fixed|randomized|realistic|concrete'}
+"memory_model": [
+  {"name": 'REGISTER', "base": '0x40000000', "size": '256', "strategy": 'randomized|realistic|forwarded|symbolic'}
 ]
 ```
 
-## Third - starting the analyzer
+## Third - setting the interrupt model
 
-inception --elf web.elf --bitcode web.bc 
+On second and important challenge when analyzing firmware programs it the interrupt model.
+Hardware peripherals uses this interrupt mechanism to notify the firmware that a task complete.
+To process interrupt, the CPU stopd current execution, stack context (registers) on the stack, resolve the interrupt handler address using the interrupt vector and then update the instruction pointer to start executing the interrupt handler.
+To support interrupt, the analyzer need to emulate all this part. Two behavior are supported:
 
+* real communication with the interrupt controler. This mode is automatically used when the Inception debugger is attached.
+However, it needs to run a software stub on the device to catch and forward interrupt. Since the set-up is not easy, we will focus on the second method.
+* interrupt modeling. This is a new feature of Inception where interrupt are inserted during the analysis following a user-defined frequency. This enables users to choose how complete this analysis should work. A too short frequency can lead in an exponential 
+growth in the number of states.
+
+The example below will generate systick interrupt very 1000 instructions.
+```
+{
+    "interrupt_model" : [
+      { "id": 15, "frequency" : 1000}
+    ]
+}
+```
+
+## Fourth - starting the analyzer
+
+```
+inception --elf ./lpc18xx-demos/bin.elf --bitcode ./lpc18xx-demos/bin.bc \
+--allocate-determ --allocate-determ-start-address 0x90000000 --allocate-determ-size 10000 \
+--mem_conf_file ./mem.json --interrupt_conf_file ./irq.json
+```
 ## Inspection the analysis results
 
 
