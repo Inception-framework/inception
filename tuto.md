@@ -100,6 +100,16 @@ During the analysis, inception triggers SysTick interrupt every 1000 instruction
 **Note** options starting with 'allocate-determ' are used to force 32bits address space when interpreting High-IR LLVM IR.
 This avoids pointer missmatch.
 
+## Analysis Results
 
+On the original code, at each SysTick interrupt a counter is incremented. When this timer is above 20, the TCP stack is refreshed.
+Our synthetic vulnerability arrives at this moment.
+
+After running inception for a few second, it prints an error message that indicates the presence of an out of bound pointer on 
+line 35 in main.c. This experiment demonstrates how Inception can be configured to detect memory corruption on firmware programs using a custom interrupt model. Even simple, this example is representative of issues on real world firmware where bug triger condition are often related to interrupt and hardware i/o.
+
+```
+KLEE: ERROR: lpc18xx-demos/Examples/Web/main.c:35: memory error: out of bound pointer
+```
 
 
