@@ -34,7 +34,7 @@ Alternatively, you can bulld the necessary components on your machine (you can u
 
 If you want you can skip this step and run all the examples that do not require redirection to the real device.
 
-We are currently working on the release of the debugger. We will provide both source code and a synthesized design.
+We provide both source code and a synthesized design.
 More details will be [here](https://github.com/Inception-framework/debugger).
 
 If you would like to know more about the debugger of Inception, please [refer to this page.](debugger.md)
