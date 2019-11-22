@@ -67,6 +67,7 @@ You can find our tool for verification [here](https://github.com/Inception-frame
 
 ## Official logo
 
-![alt text][logo]
+![alt text][logo](Réalisé par SR Graphik srgraphik.contact@gmail.com)
 
 [logo]: https://raw.githubusercontent.com/Inception-framework/inception/master/Logo_inception.png "Inception official logo"
+
