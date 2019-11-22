@@ -16,7 +16,7 @@ assembly (or statically linked binary code). This representation is based on LLV
 
 ***Inception-debugger*** is a fast USB3.0 JTAG debugger (currently supporting ARM AHB-AP debug port). 
 Inception-analyzer uses it to redirect read/write memory accesses and interrupts to a real target device.
-Inception-debugger requires off-the-shelf hardware (Cypress Semiconductor FX3, Digilent ZYBO Zinq-7000 FPGA).
+Inception-debugger requires off-the-shelf hardware (Cypress Semiconductor FX3, Zedboard Zynq-7000 Development Board).
 
 ## Authors
 
