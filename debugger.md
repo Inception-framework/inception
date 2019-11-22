@@ -13,7 +13,7 @@ The Inception debugger is a powerful device that answers to 2 main needs:
 The debugger is not a single piece but a set of 3 off the shelf components.
 
 * Cypress FX3 CYUSB3 development board that has a Programmable Logic Circuit that enables fast communication with external FPGA.
-* FPGA development board, we used the Avnet Zedboard that is relatively affordable. We choose this board for two simple reasons. First, we had one. Second, it has a FMC connector that makes the connection with the FX3 easier and more stable.
+* FPGA development board, we used the Zedboard Zynq-7000 Development Board that is relatively affordable. We choose this board for two simple reasons. First, we had one. Second, it has a FMC connector that makes the connection with the FX3 easier and more stable.
 * And finally the FX3 to FMC connector.
 
 **Note** The pinouts for the zedboard is avaliable ![here]()
